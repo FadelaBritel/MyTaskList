@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var tasks_service_1 = require("./services/tasks.service");
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -17,7 +18,9 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>My First MEAN App</h1>"
+        moduleId: module.id,
+        templateUrl: 'app.component.html',
+        providers: [tasks_service_1.TasksService]
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
