@@ -1,0 +1,25 @@
+{
+  "name": "mytasklist",
+  "version": "1.0.0",
+  "description": "Simple task manager",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FadelaBritel/MyTaskList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FadelaBritel/MyTaskList/issues"
+  },
+  "homepage": "https://github.com/FadelaBritel/MyTaskList#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "mongojs": "^2.4.0"
+  }
+}
