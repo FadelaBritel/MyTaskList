@@ -19,6 +19,43 @@ var TasksComponent = (function () {
             _this.tasks = tasks;
         });
     }
+    TasksComponent.prototype.addTask = function (event) {
+        var _this = this;
+        event.preventDefault();
+        var newTask = {
+            title: this.title,
+            isDone: false
+        };
+        this.tasksService.addTask(newTask)
+            .subscribe(function (tasks) {
+            _this.tasks.push(newTask);
+            _this.title = '';
+        });
+    };
+    TasksComponent.prototype.deleteTask = function (id) {
+        var tasks = this.tasks;
+        this.tasksService.deleteTask(id)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < tasks.length; i++) {
+                    if (tasks[i]._id == id) {
+                        tasks.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
+    TasksComponent.prototype.updateStatus = function (task) {
+        var _task = {
+            _id: task._id,
+            title: task.title,
+            isDone: !task.isDone
+        };
+        this.tasksService.updateStatus(_task)
+            .subscribe(function (data) {
+            task.isDone = !task.isDone;
+        });
+    };
     return TasksComponent;
 }());
 TasksComponent = __decorate([

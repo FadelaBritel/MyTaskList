@@ -17,7 +17,24 @@ var TasksService = (function () {
         console.log("TaskService initialized...");
     }
     TasksService.prototype.getTasks = function () {
-        return this.http.get('http://localhost:3000/api/tasks').map(function (res) { return res.json(); });
+        return this.http.get('/api/tasks')
+            .map(function (res) { return res.json(); });
+    };
+    TasksService.prototype.addTask = function (newtask) {
+        var headers = new http_1.Headers();
+        headers.append('Content-type', 'application/json');
+        return this.http.post('/api/task', JSON.stringify(newtask), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TasksService.prototype.deleteTask = function (id) {
+        return this.http.delete('/api/task/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    TasksService.prototype.updateStatus = function (task) {
+        var headers = new http_1.Headers();
+        headers.append('Content-type', 'application/json');
+        return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
+            .map(function (res) { return res.json(); });
     };
     return TasksService;
 }());
